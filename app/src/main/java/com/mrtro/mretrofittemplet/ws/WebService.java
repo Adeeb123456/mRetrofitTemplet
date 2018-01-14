@@ -17,7 +17,8 @@ public interface WebService {
 
     @GET("Login")
     Call<LoginModel> loginUser(@QueryMap Map<String, String> options);
-
+    @GET("Login")
+    Call<LoginModel> loginUser2(@QueryMap Map<String, String> options);
 
 /**
     @POST(AppConst.Update_Profile)
