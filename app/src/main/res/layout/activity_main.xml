@@ -9,13 +9,27 @@
             type="java.lang.String"/>
     </data>
 
-<android.support.constraint.ConstraintLayout
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.mrtro.mretrofittemplet.MainActivity">
 
+    <Button
+        android:id="@+id/loginId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/login" />
+
+    <Button
+        android:id="@+id/signupId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/signup" />
+
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/user"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@{user}"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -23,6 +37,18 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/finincialTrackingId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/Accout" />
+
+
+</LinearLayout>
 
 </layout>

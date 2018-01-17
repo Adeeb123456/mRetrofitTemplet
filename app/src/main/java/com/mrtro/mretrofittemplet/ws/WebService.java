@@ -1,18 +1,68 @@
 package com.mrtro.mretrofittemplet.ws;
 
+import com.google.gson.JsonObject;
+import com.mrtro.mretrofittemplet.model.login.GetAccount;
+import com.mrtro.mretrofittemplet.model.login.Login;
 import com.mrtro.mretrofittemplet.model.login.LoginModel;
+import com.mrtro.mretrofittemplet.model.login.Signup;
 
 import java.util.Map;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Headers;
 import retrofit2.http.POST;
-import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 
 public interface WebService {
+
+    @Headers({ "Content-Type: application/json;charset=UTF-8"})
+@POST("?r=api/userapi/login")
+Call<Login> loginUser(@Body JsonObject jsonbject);
+
+@Headers({"Content-Type: application/json;charset=UTF-8"})
+
+@POST("?r=api/userapi/signup")
+Call<Signup> singnUpUser(@Body JsonObject jsonObject);
+
+@FormUrlEncoded
+@POST("?r=api/userapi/signup")
+Call<Signup> signUpFormUrlEncoded(@Field("api_key") String key,
+                                  @Field("langauge") String lan,
+                                  @Field("user_id") String uid,
+                                  @Field("f_name") String fname,
+                                  @Field("password") String pass,
+                                  @Field("l_name") String lnam,
+                                  @Field("email") String email,
+                                  @Field("phone_no") String phone,
+                                  @Field("image_url") String imr_url
+);
+
+
+
+ @Headers({"Content-Type: application/json;charset=UTF-8"})
+ @POST("?r=api/userapi/listfinancialtracking")
+ Call<GetAccount> GET_ACCOUNT_CALL(@Body JsonObject jsonObject);
+
+
+
+
+/*{
+"api_key": "SI1UJ2MA4IZ0YA",
+"langauge" :"ar/en",
+"user_id":"0",
+"f_name": "james",
+"password":"123",
+ "l_name": "Bond",
+ "email": "ijaz@geniteam.com",
+ "phone_no":"+923444404160",
+ "image_url":"base64image",
+}
+*/
+
 
 
     @GET("Login")
