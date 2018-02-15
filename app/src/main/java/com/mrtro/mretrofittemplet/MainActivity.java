@@ -3,6 +3,7 @@ package com.mrtro.mretrofittemplet;
 import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -15,9 +16,11 @@ import com.mrtro.mretrofittemplet.model.login.Signup;
 import com.mrtro.mretrofittemplet.model.login.UserInfo;
 import com.mrtro.mretrofittemplet.util.CommonUtils;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -40,6 +43,29 @@ binding= DataBindingUtil.setContentView(this,R.layout.activity_main);
         binding.loginId.setOnClickListener(this);
         binding.signupId.setOnClickListener(this);
         binding.finincialTrackingId.setOnClickListener(this);
+
+
+      Call<ResponseBody>  call=service.getAccount("Token token="+
+              "d973e83bfe7b6fabd011e057120250f6906c12c9"+", expires_in=31536000 ,"
+      +"token_type=Bearer ,"+"scope=switch");
+
+call.enqueue(new Callback<ResponseBody>() {
+    @Override
+    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+        String s=response.message();
+        Log.i("debug","msg "+s);
+        String s1=response.code()+"";
+        Log.i("debug","err body "+s1);
+        String s3="null";
+        s3=response.isSuccessful()+"";
+        Log.i("debug","res body  "+s3);
+    }
+
+    @Override
+    public void onFailure(Call<ResponseBody> call, Throwable t) {
+        Log.i("debug","err "+t.getMessage());
+    }
+});
 
 
 
